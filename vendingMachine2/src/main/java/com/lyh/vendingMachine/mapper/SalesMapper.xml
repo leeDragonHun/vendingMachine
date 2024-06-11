@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.vendingMachine.mapper.SalesMapper">
+	<!-- 상품 판매 기록 추가 -->
+	<insert id="addSales" parameterType="map">
+		INSERT INTO 
+			sales(product_key, product_name, product_price, sales_date) 
+		VALUES
+			(${productKey}, '${productName}',  ${productPrice}, NOW());
+	</insert>
+	
+	<!-- 총수입 출력 -->
+	<select id="totalRevenue" resultType="int">
+		SELECT SUM(product_price) AS totalRevenue FROM sales
+	</select>
+	
+	<!-- 제품별 수입 출력 -->
+	<select id="productRevenue" resultType="map">
+		SELECT 
+			product_name AS productName, 
+			SUM(product_price) AS productRevenue
+		FROM 
+			sales
+		GROUP BY 
+			product_name
+	</select>
+</mapper>

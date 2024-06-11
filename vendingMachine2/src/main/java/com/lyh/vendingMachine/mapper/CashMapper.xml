@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.vendingMachine.mapper.CashMapper">
+	<!-- 지폐, 동전 개수 업데이트 -->
+	<update id="addUpdate" parameterType="map">
+		UPDATE
+			cash
+		SET
+			cash_stock = cash_stock + 1
+		WHERE
+			cash_type = ${coin};
+	</update>
+	
+	<!-- 현금 재고 출력 -->
+	<select id="cashStock" resultType="map">
+		SELECT
+			cash_key AS cashKey, 
+			cash_type AS cashType, 
+			cash_stock AS cashStock
+		FROM
+			cash	
+	</select>
+	
+	<!-- 현금 재고 개별 충전 -->
+	<update id="addCashStock">
+		UPDATE
+			cash
+		SET
+			cash_stock = cash_stock + ${addCashStock}
+		WHERE
+			cash_key = ${cashKey}
+	</update>
+</mapper>

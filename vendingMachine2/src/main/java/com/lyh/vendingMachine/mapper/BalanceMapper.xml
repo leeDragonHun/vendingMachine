@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.vendingMachine.mapper.BalanceMapper">
+	<!-- 잔액 출력 -->
+	<select id="select" resultType="int">
+		SELECT balance FROM balance
+	</select>
+	
+	<!-- 잔액 추가 업데이트 -->
+	<update id="addUpdate" parameterType="map">
+		UPDATE 
+			balance
+		SET 
+			balance = balance + ${coin}
+	</update>
+	
+	<!-- 잔액 빼기 업데이트 -->
+	<update id="subUpdate" parameterType="map">
+		UPDATE 
+			balance
+		SET 
+			balance = balance - ${productPrice}
+	</update>
+</mapper>

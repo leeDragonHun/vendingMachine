@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.vendingMachine.mapper.ProductMapper">
+	<!-- 제품 리스트 출력 -->
+	<select id="select" resultType="com.lyh.vendingMachine.dto.Product">
+		SELECT 
+			product_key AS productKey, 
+			product_name AS productName, 
+			product_price AS productPrice, 
+			product_stock AS productStock, 
+			update_date AS updateDate
+		From
+			product
+	</select>
+
+	<!-- 1개 팔렸을 때 재고 1개 빼기 -->
+	<update id="subUpdate" parameterType="map">
+		UPDATE 
+			product 
+		SET 
+			product_stock = product_stock - 1 
+		WHERE 
+			product_key = ${productKey}
+	</update>
+	
+	<!-- 재고 더하기 -->
+	<update id="addUpdate" parameterType="map">
+		UPDATE 
+			product 
+		SET 
+			product_stock = product_stock + ${addStock}
+		WHERE 
+			product_key = ${productKey}
+	</update>
+	
+	<!-- 제품 가격 업데이트 -->
+	<update id="priceUpdate" parameterType="map">
+		UPDATE
+			product
+		SET
+			product_price = ${updatePrice}
+		WHERE
+			product_key = ${productKey}
+	</update>
+	
+	<!-- 제품 추가  -->
+	<insert id="addProduct" parameterType="map">
+		INSERT INTO 
+			product(product_name, product_price) 
+		VALUES
+			('${productName}', ${productPrice});
+	</insert>
+	
+	<!-- 제품 제거 -->
+	<delete id="delProduct" parameterType="map">
+		DELETE 
+		FROM 
+			product 
+		WHERE 
+			product_key = ${productKey}
+	</delete>
+</mapper>

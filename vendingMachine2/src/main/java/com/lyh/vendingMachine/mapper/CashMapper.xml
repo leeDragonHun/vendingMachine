@@ -30,4 +30,26 @@
 		WHERE
 			cash_key = ${cashKey}
 	</update>
+	
+ <update id="updateCashStock" parameterType="com.lyh.vendingMachine.dto.Change">
+    UPDATE cash
+    SET 
+    cash_stock = CASE 
+        WHEN cash_key = 2 THEN cash_stock - #{cashBack10000}
+        WHEN cash_key = 3 THEN cash_stock - #{cashBack5000}
+        WHEN cash_key = 4 THEN cash_stock - #{cashBack1000}
+        WHEN cash_key = 5 THEN cash_stock - #{cashBack500}
+        WHEN cash_key = 6 THEN cash_stock - #{cashBack100}
+        WHEN cash_key = 7 THEN cash_stock - #{cashBack50}
+        WHEN cash_key = 8 THEN cash_stock - #{cashBack10}
+        ELSE cash_stock
+    END
+    WHERE cash_key IN (2, 3, 4, 5, 6, 7, 8);
+</update>
+
+<update id="updateBalance0">
+    UPDATE balance
+    SET balance = 0;
+</update>
+    
 </mapper>

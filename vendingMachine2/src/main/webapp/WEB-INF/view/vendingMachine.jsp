@@ -80,13 +80,13 @@
 		<tr style="height: 200px;">
 			<td colspan="2">
 				잔돈 나오는 곳 <br>
-				10,000원 : <span id="cashBack10000"></span> 개 <br>
-				5,000원 : <span id="cashBack5000"></span> 개 <br>
-				1,000원 : <span id="cashBack1000"></span> 개 <br>
-				500원 : <span id="cashBack500"></span> 개 <br>
-				100원 : <span id="cashBack100"></span> 개 <br>
-				50원 : <span id="cashBack50"></span> 개 <br>
-				10원 : <span id="cashBack10"></span> 개
+				10,000원 : <span id="cashBack10000"></span> ${change.cashBack10000 }개 <br>
+				5,000원 : <span id="cashBack5000"></span> ${change.cashBack5000 }개 <br>
+				1,000원 : <span id="cashBack1000"></span> ${change.cashBack1000 }개 <br>
+				500원 : <span id="cashBack500"></span> ${change.cashBack500 }개 <br>
+				100원 : <span id="cashBack100"></span> ${change.cashBack100 }개 <br>
+				50원 : <span id="cashBack50"></span> ${change.cashBack50 }개 <br>
+				10원 : <span id="cashBack10"></span> ${change.cashBack10 }개
 			</td>				
 		</tr>
 	</table>

@@ -1,5 +1,5 @@
 
-# vendingMachine
+# vendingMachine[바로가기](http://52.79.169.153/vendingMachine2/main)
 
 ## ❗ 요구사항
 1. 다양한 음료를 제공할 것(사이다, 콜라 등)
